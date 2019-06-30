@@ -33,7 +33,8 @@
           box
           v-on:change="filterArray"
         ></v-select>
-        <v-btn small dark color="blue lighten-1">Filter Players</v-btn>
+        <v-btn v-if="!isFiltered" @click="this.filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
+        <v-btn v-else @click="this.clearFilteredArray" dark color="blue lighten-1">Show All Players</v-btn>
       </div>
     </div>
     <div class="cardContainer">
@@ -105,9 +106,7 @@ export default {
       console.log("key: " + key);
       console.log("value: " + event);
 
-        if(key === this.previousKey) {
-          this.filteredPlayerArray = [];
-        }
+        // TODO Working on this methos
 
         this.isFiltered = true;
     }, 
