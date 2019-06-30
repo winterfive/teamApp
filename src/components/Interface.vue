@@ -44,22 +44,8 @@
     </div>
     <!-- Player Cards -->
     <div class="cardContainer">
-      <Card v-show="!isFiltered" v-for="player in this.playerArray" 
-        class="row" 
-        :key="player.index" 
-        :playerName="player.name"
-        :playerAge="player.age"
-        :playerGender="player.gender"
-        :playerState="player.state"
-        :playerStatus="player.status">
-        {{ playerName }}
-        {{ playerAge }}
-        {{ playerGender }}
-        {{ playerState }}
-        {{ playerStatus }}
-      </Card>
-    <!-- Repeated code here but I'm leaning towards the ship part of "build and ship", go go go! -->
-      <Card v-show="isFiltered" v-for="player in this.filteredPlayerArray" 
+      <Card 
+        v-for="player in this.playerArray"
         class="row" 
         :key="player.index" 
         :playerName="player.name"
@@ -78,9 +64,9 @@
 </template>
 
 <script>
-let testArray = [];
 let lowAge = 0;
 let highAge = 17;
+let states = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
 
 import Card from "./Card.vue";
 import axios from 'axios';
@@ -92,13 +78,14 @@ export default {
   },
   data: function() {
     return {
-      ages: [],    
-      filteredPlayerArray: null,     
+      ages: [],
+      allPlayersArray: null,   
+      filteredPlayerArray: null,
+      filters: [],    
       genders: [ "Female", "Male", "Cis/Trans"],
       isFiltered: false,
-      locations: [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ],
-      playerArray: null,
-      previousKey: "",
+      locations: states,
+      playerArray: null,      
       status: [ "active", "inactive"]
     }
   },
@@ -111,13 +98,16 @@ export default {
     filterArray(key, event) {
       console.log("key: " + key);
       console.log("value: " + event);
+      event.preventDefault()
 
-        // TODO Working on this method
+      // TODO Working on this method
 
-        //this.filtersToUse.push("'key':'event'")
-        event.preventDefault()
+      //this.filtersToUse.push("'key':'event'")      
 
-        this.isFiltered = true;
+      // Filter allPlayersArray using filters [] to create filteredPlayerArray
+
+      this.isFiltered = true;
+      this.playerArray = this.filteredPlayerArray;
     }, 
     clearFilteredArray() {
       this.isFiltered = false;
