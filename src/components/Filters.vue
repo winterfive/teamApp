@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="filterContainer" align-center>
+        <div class="filterContainer">
             <div>
                 <h2>Filter Players</h2>
             </div>
