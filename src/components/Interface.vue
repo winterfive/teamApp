@@ -75,7 +75,7 @@ let testArray = [];
 let lowAge = 0;
 let highAge = 17;
 
-import Card from "./components/Card.vue";
+import Card from "./Card.vue";
 import axios from 'axios';
 
 export default {

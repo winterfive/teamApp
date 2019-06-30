@@ -9,6 +9,8 @@
   let lowAge = 0;
   let highAge = 17;
 
+  import Interface from './components/Interface.vue';
+
   export default {
     name: "app",
     components: {
