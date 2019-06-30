@@ -1,24 +1,37 @@
 <template>
   <div id="app">
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
+    <Filters/>
+    <Card v-for="player in this.playerArray" 
+      :key="player.index" 
+      :playerName="player.name"
+      :playerAge="player.age"
+      :playerGender="player.gender"
+      :playerState="player.state"
+      :playerStatus="player.status">
+        {{ playerName }}
+        {{ playerAge }}
+        {{ playerGender }}
+        {{ playerState }}
+        {{ playerStatus }}
+    </Card>
   </div>
 </template>
 
 <script>
 import Card from "./components/Card.vue";
+import Filters from "./components/Filters.vue";
 import axios from 'axios';
 
 export default {
   name: "app",
   components: {
-    Card
+    Card,
+    Filters
   },
   data: function() {
     return {
-      playerArray: null
+      playerArray: null,
+      isFiltered: false
     }
   },
   created() {

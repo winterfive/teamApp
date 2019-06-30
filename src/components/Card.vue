@@ -2,13 +2,13 @@
   <div>
     <div class="container">
       <div class="sameLine">
-        <h2>Player Name</h2>
-        <p class="playerAge">17</p>
+        <h2>{{ this.playerName }}</h2>
+        <p class="playerAge">{{ this.playerAge }}</p>
       </div>
       <div class="sameLine">
-        <p>male</p>
-        <p>TX</p>
-        <p>active</p>
+        <p>{{ this.playerGender }}</p>
+        <p>{{ this.playerState }}</p>
+        <p>{{ this.playerStatus }}</p>
         <button>Edit Player</button>
       </div>
     </div>
@@ -18,7 +18,14 @@
 
 <script>
 export default {
-  name: "Card"
+  name: "Card",
+  props: {
+    playerName: String,
+    playerAge: Number,
+    playerGender: String,
+    playerState: String,
+    playerStatus: String
+  }
 };
 </script>
 
