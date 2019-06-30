@@ -5,9 +5,6 @@
 </template>
 
 <script>
-  let testArray = [];
-  let lowAge = 0;
-  let highAge = 17;
 
   import Interface from './components/Interface.vue';
 
