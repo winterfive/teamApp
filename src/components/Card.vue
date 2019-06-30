@@ -43,6 +43,7 @@ $circle-color: #f6d4ac;
    width: 350px;
    margin: 3px;
    padding: 15px;
+   border-radius: 5px;
  }
 
  .sameLine {

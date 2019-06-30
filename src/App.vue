@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <Filters/>
-    <Card v-for="player in this.playerArray" 
-      :key="player.index" 
-      :playerName="player.name"
-      :playerAge="player.age"
-      :playerGender="player.gender"
-      :playerState="player.state"
-      :playerStatus="player.status">
-        {{ playerName }}
-        {{ playerAge }}
-        {{ playerGender }}
-        {{ playerState }}
-        {{ playerStatus }}
-    </Card>
+    <div class="cardContainer">
+      <Card v-for="player in this.playerArray" 
+        class="row" 
+        :key="player.index" 
+        :playerName="player.name"
+        :playerAge="player.age"
+        :playerGender="player.gender"
+        :playerState="player.state"
+        :playerStatus="player.status">
+          {{ playerName }}
+          {{ playerAge }}
+          {{ playerGender }}
+          {{ playerState }}
+          {{ playerStatus }}
+      </Card>
+    </div>
   </div>
 </template>
 
@@ -55,9 +58,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color:  #daf6ac;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 </style>
