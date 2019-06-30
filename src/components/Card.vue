@@ -1,3 +1,9 @@
+<!-- TODOS
+
+- enable 'edit player' btn
+
+-->
+
 <template>
   <div>
     <div class="container">
@@ -9,9 +15,9 @@
         <p>{{ this.playerGender }}</p>
         <p>{{ this.playerState }}</p>
         <p>{{ this.playerStatus }}</p>
-        <v-btn small dark color="blue lighten-1">Edit Player</v-btn>
+        <v-btn @click="editPlayer" small dark color="blue lighten-1">Edit Player</v-btn>
       </div>
-    </div>    
+    </div>
   </div>
 </template>
 
