@@ -1,3 +1,11 @@
+<!-- TODOS
+
+- center filter container
+- clear v-selects on click of 'filter playes' btn
+- enable 'edit player' btn
+
+-->
+
 <template>
   <div>
     <div class="filterContainer">
@@ -8,35 +16,33 @@
         <v-select
           :items="this.ages"
           label="Age"
-          type="age"
           box
-          @click="filterArray('age', $event)"
+          v-on:click="filterArray('age', $event)"
         ></v-select>
         <v-select 
           :items="this.genders"
           label="Gender"
-          type="gender"
           box
-          v-on:change="filterArray"
+          v-on:click="filterArray('gender', $event)"
         ></v-select>
         <v-select 
           :items="this.locations"
           label="Location"
-          type="state"
           box
-          v-on:change="filterArray"
+          v-on:click="filterArray('state', $event)"
         ></v-select>
         <v-select 
           :items="this.status"
           label="Status"
-          type=
           box
-          v-on:change="filterArray"
+          v-on:click="filterArray('status', $event)"
         ></v-select>
-        <v-btn v-if="!isFiltered" @click="this.filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
-        <v-btn v-else @click="this.clearFilteredArray" dark color="blue lighten-1">Show All Players</v-btn>
+        <!-- Filtering btns -->
+        <v-btn class="filterBtn" v-if="!isFiltered" @click="this.filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
+        <v-btn class="filterBtn" v-else @click="this.clearFilteredArray" small dark color="blue lighten-1">Show All Players</v-btn>
       </div>
     </div>
+    <!-- Player Cards -->
     <div class="cardContainer">
       <Card v-show="!isFiltered" v-for="player in this.playerArray" 
         class="row" 
@@ -106,7 +112,10 @@ export default {
       console.log("key: " + key);
       console.log("value: " + event);
 
-        // TODO Working on this methos
+        // TODO Working on this method
+
+        //this.filtersToUse.push("'key':'event'")
+        event.preventDefault()
 
         this.isFiltered = true;
     }, 
@@ -143,6 +152,10 @@ export default {
   flex-direction: column;
   font-size: 0.8em;
   align-items: center;
+}
+
+.filterBtn {
+  width: 140px;
 }
 
 h2 {
