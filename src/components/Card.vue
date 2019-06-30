@@ -37,8 +37,9 @@ export default {
 <style scoped lang="scss">
 
 $bg-color: #313eab;
-$text-color: white;
+$bg-player-age: #1A237E;
 $circle-color: #f6d4ac;
+$text-color: white;
 
 .container {
   background-color: $bg-color;
@@ -67,7 +68,7 @@ v-btn {
 }
 
 .playerAge {
-  background-color: #1A237E;
+  background-color: $bg-player-age;
   font-size: 1.2em;
   font-weight: bold;
   width: 40px;
