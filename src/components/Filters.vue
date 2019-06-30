@@ -1,34 +1,34 @@
 <template>
     <div>
-        <div class="filterContainer">
+        <div class="filterContainer" align-center>
             <div>
                 <h2>Filter Players</h2>
             </div>
             <div class="selectContainer">
                 <div class="filter">
                     <v-select
-                    :items="items"
+                    :items="this.ages"
                     label="Age"
                     box
                     ></v-select>
                 </div>
                 <div class="filter">
                     <v-select
-                    :items="items"
+                    :items="this.genders"
                     label="Gender"
                     box
                     ></v-select>
                 </div>
                 <div class="filter">
                     <v-select
-                    :items="items"
+                    :items="this.locations"
                     label="Location"
                     box
                     ></v-select>
                 </div>
                 <div class="filter">
                     <v-select
-                    :items="items"
+                    :items="this.status"
                     label="Status"
                     box
                     ></v-select>
@@ -40,13 +40,22 @@
 
 <script>
 export default {
-    name: "filter"    
+    name: "filter",
+    data: function() {
+        return {
+            ages: [ "0 - 4", "5 - 7", "7 - 10", "11 - 14", "14 - 17"],
+            genders: [ "Female", "Male", "Cis/Trans"],
+            locations: [],
+            status: [ "active", "inactive"]
+        }
+    }  
 }
 </script>
 
 <style lang="scss" scoped>
     .filter {
         margin: 10px;
+        width: 200px;
     }
 
     .filterContainer {

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <Filters/>
     <div class="cardContainer">
       <Card v-for="player in this.playerArray" 
@@ -17,7 +17,7 @@
           {{ playerStatus }}
       </Card>
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
