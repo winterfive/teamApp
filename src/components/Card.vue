@@ -11,8 +11,7 @@
         <p>{{ this.playerStatus }}</p>
         <v-btn small dark color="blue lighten-1">Edit Player</v-btn>
       </div>
-    </div>
-    
+    </div>    
   </div>
 </template>
 
@@ -35,40 +34,40 @@ $bg-color: #313eab;
 $text-color: white;
 $circle-color: #f6d4ac;
 
- .container {
-   background-color: $bg-color;
-   display: flex;
-   flex-direction: column;
-   color: $text-color;
-   width: 350px;
-   margin: 3px;
-   padding: 15px;
-   border-radius: 5px;
- }
+.container {
+  background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
+  color: $text-color;
+  width: 350px;
+  margin: 3px;
+  padding: 15px;
+  border-radius: 5px;
+}
 
- .sameLine {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
- }
+.sameLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
- p {
-   margin: 0.3em;
- }
+p {
+  margin: 0.3em;
+}
 
- v-btn {
-   width: 80px;
-   border-radius: 5px;
- }
+v-btn {
+  width: 80px;
+  border-radius: 5px;
+}
 
- .playerAge {
-   background-color: #1A237E;
-   font-size: 1.2em;
-   font-weight: bold;
-   width: 40px;
-   height: 40px;
-   border-radius: 80px;
-   color: white;
-   line-height: 2.4;
- }
+.playerAge {
+  background-color: #1A237E;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 80px;
+  color: white;
+  line-height: 2.4;
+}
 </style>
