@@ -3,13 +3,13 @@
     <div class="container">
       <div class="sameLine">
         <h2>{{ this.playerName }}</h2>
-        <p class="playerAge">{{ this.playerAge }}</p>
+        <p class="playerAge" color="blue lighten-4">{{ this.playerAge }}</p>
       </div>
       <div class="sameLine">
         <p>{{ this.playerGender }}</p>
         <p>{{ this.playerState }}</p>
         <p>{{ this.playerStatus }}</p>
-        <button>Edit Player</button>
+        <v-btn small dark color="blue lighten-1">Edit Player</v-btn>
       </div>
     </div>
     
@@ -55,17 +55,19 @@ $circle-color: #f6d4ac;
    margin: 0.3em;
  }
 
- button {
+ v-btn {
    width: 80px;
    border-radius: 5px;
  }
 
  .playerAge {
-   background-color: $circle-color;
+   background-color: #1A237E;
+   font-size: 1.2em;
+   font-weight: bold;
    width: 40px;
    height: 40px;
    border-radius: 80px;
-   color: black;
+   color: white;
    line-height: 2.4;
  }
 </style>
