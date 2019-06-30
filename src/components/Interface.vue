@@ -1,8 +1,9 @@
 <!-- TODOS
 
 - center filter container
-- clear v-selects on click of 'filter playes' btn
+- clear v-selects on click of 'filter players' btn
 - enable 'edit player' btn
+- add dark red background for inactive players
 
 -->
 
@@ -96,9 +97,9 @@ export default {
   },
   methods: {
     filterArray(key, event) {
-      console.log("key: " + key);
-      console.log("value: " + event);
       event.preventDefault()
+      console.log("key: " + key);
+      console.log("value: " + event);      
 
       // TODO Working on this method
 
