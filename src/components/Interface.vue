@@ -1,6 +1,6 @@
 <!-- TODOS
 
-- center filter container
+- style: center filter container
 - clear v-selects on click of 'filter players' btn
 - enable 'edit player' btn
 - add delete player option to 'edit player' form
@@ -91,13 +91,13 @@ export default {
       currentAge: 0,
       currentGender: "",
       currentState: "",
-      currentStatus: "",  
+      currentStatus: "",
+      displayedPlayerArray: null, 
       filteredPlayerArray: null,
       filters: [],    
       genders: genderList,
       isFiltered: false,
-      locations: statesList,
-      displayedPlayerArray: null,      
+      locations: statesList,            
       status: statusList
     }
   },
@@ -122,21 +122,25 @@ export default {
           return this.currentStatus
       } 
     },
-    clearFilteredArray() {      
+    clearFilteredArray() {     
       this.isFiltered = false;
       this.filteredPlayerArray = [];
       this.filters = [];
       this.displayedPlayerArray = this.allPlayersArray;
     },
     filterArray() {
+      this.isFiltered = true;
+
       // Using first filter on allPlayersArray
       if(this.filters.length >= 1) {
         let x = this.filters[0];
-        console.log("filter: " + x);
-
-        let value = checkValue(x);
+        let value = this.checkValue(x);
+        console.log("value prior to filter: " + value);
 
         this.filteredPlayerArray = this.allPlayersArray.filter(function (value) {
+          // TODO Working on this method
+          // value is an object, not string or number
+          console.log("filter value in filter: " + value);
           return this.allPlayersArray.x === value;
         })
       }
@@ -145,8 +149,7 @@ export default {
         // Iterate through filters[] starting at 2nd value with filteredPlayerArray
       }      
       
-      this.displayedPlayerArray = this.filteredPlayerArray;
-      this.isFiltered = true;
+      this.displayedPlayerArray = this.filteredPlayerArray;      
     },
     saveFilter(filterName) {
       this.filters.push(filterName);
