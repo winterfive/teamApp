@@ -19,24 +19,28 @@
           label="Age"
           box
           v-model.lazy="currentAge"
+          v-on:change="saveFilter('age')"
         ></v-select>
         <v-select 
           :items="this.genders"
           label="Gender"
           box
           v-model.lazy="currentGender"
+          v-on:change="saveFilter('gender')"
         ></v-select>
         <v-select 
           :items="this.locations"
           label="Location"
           box
           v-model.lazy="currentState"
+          v-on:change="saveFilter('state')"
         ></v-select>
         <v-select 
           :items="this.status"
           label="Status"
           box
           v-model.lazy="currentStatus"
+          v-on:change="saveFilter('status')"
         ></v-select>
         <!-- Filtering btns -->
         <v-btn class="filterBtn" v-if="!isFiltered" @click="filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
@@ -88,12 +92,12 @@ export default {
       currentState: "",
       currentStatus: "",  
       filteredPlayerArray: null,
-      filters: [],    
+      filters: {},    
       genders: genderList,
       isFiltered: false,
       locations: statesList,
       playerArray: null,      
-      status: null
+      status: statusList
     }
   },
   created: function() {
@@ -102,11 +106,13 @@ export default {
     }
   },
   methods: { 
-    clearFilteredArray() {
-      console.log("clear filtered array");
+    clearFilteredArray() {      
       this.isFiltered = false;
       console.log("isFiltered: " + this.isFiltered);
       this.filteredPlayerArray = [];
+      console.log("cleared filtered array: " + this.filteredPlayerArray);
+      this.filters = {};
+      console.log("cleared filters: " + this.filters);
     },
     filterArray() {
       // TODO FILTER THE ARRAY!!!
@@ -117,6 +123,25 @@ export default {
       this.isFiltered = true;
       console.log("isFiltered: " + this.isFiltered);
       this.playerArray = this.filteredPlayerArray;
+    },
+    saveFilter(keyName) {
+      console.log("keyname is " + keyName);
+      switch(keyName) {
+        case 'age':
+          this.filters[keyName] = this.currentAge;
+          break;
+        case 'gender':
+          this.filters[keyName] = this.currentGender;
+          break;
+        case 'state':
+          this.filters[keyName] = this.currentState;
+          break;
+        case 'status':
+          this.filters[keyName] = this.currentStatus;
+          break;
+        default:
+          return;
+      }
     }
   },
   mounted: function() {
