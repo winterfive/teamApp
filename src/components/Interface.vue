@@ -18,25 +18,25 @@
           :items="this.ages"
           label="Age"
           box
-          v-on:click="handleClick('age', $event)"
+          v-model.lazy="currentAge"
         ></v-select>
         <v-select 
           :items="this.genders"
           label="Gender"
           box
-          v-on:click="handleClick('gender', $event)"
+          v-model.lazy="currentGender"
         ></v-select>
         <v-select 
           :items="this.locations"
           label="Location"
           box
-          v-on:click="handleClick('state', $event)"
+          v-model.lazy="currentState"
         ></v-select>
         <v-select 
           :items="this.status"
           label="Status"
           box
-          v-on:click="handleClick('status', $event)"
+          v-model.lazy="currentStatus"
         ></v-select>
         <!-- Filtering btns -->
         <v-btn class="filterBtn" v-if="!isFiltered" @click="filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
@@ -80,7 +80,11 @@ export default {
   data: function() {
     return {
       ages: [],
-      allPlayersArray: null,   
+      allPlayersArray: null,
+      currentAge: 0,
+      currentGender: 0,
+      currentState: 0,
+      currentStatus: 0,  
       filteredPlayerArray: null,
       filters: [],    
       genders: [ "Female", "Male", "Cis/Trans"],
@@ -95,22 +99,21 @@ export default {
       this.ages.push(i);
     }
   },
-  methods: {
-    handleClick(key, $event) {      
-      console.log("key: " + key);
-      console.log("value: " + $event.target); 
-      event.preventDefault()     
-
-      // TODO Working on this method
-    }, 
+  methods: { 
     clearFilteredArray() {
+      console.log("clear filtered array");
       this.isFiltered = false;
+      console.log("isFiltered: " + this.isFiltered);
       this.filteredPlayerArray = [];
     },
     filterArray() {
-      // Filter allPlayersArray using filters [] to create filteredPlayerArray
-      //this.filters.push("'key':'event'")  
+      // TODO FILTER THE ARRAY!!!
+      console.log("v:model: " + this.currentAge);
+      console.log("v:model: " + this.currentState);
+      console.log("v:model: " + this.currentGender);
+      console.log("v:model: " + this.currentStatus); 
       this.isFiltered = true;
+      console.log("isFiltered: " + this.isFiltered);
       this.playerArray = this.filteredPlayerArray;
     }
   },
