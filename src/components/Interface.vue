@@ -3,6 +3,7 @@
 - center filter container
 - clear v-selects on click of 'filter players' btn
 - enable 'edit player' btn
+- add delete player option to 'edit player' form
 - add dark red background for inactive players
 
 -->
@@ -92,7 +93,7 @@ export default {
       currentState: "",
       currentStatus: "",  
       filteredPlayerArray: null,
-      filters: {},    
+      filters: [],    
       genders: genderList,
       isFiltered: false,
       locations: statesList,
@@ -105,39 +106,50 @@ export default {
       this.ages.push(i);
     }
   },
-  methods: { 
+  methods: {
+    checkValue(x) {
+      switch(x) {
+        case 'age':
+          return this.currentAge;
+          break;
+        case 'gender':
+          return this.currentGender
+          break;
+        case 'state':
+          return this.currentState;
+          break;
+        default:
+          return this.currentStatus
+      } 
+    },
     clearFilteredArray() {      
       this.isFiltered = false;
       this.filteredPlayerArray = [];
-      this.filters = {};
+      this.filters = [];
+      this.displayedPlayerArray = this.allPlayersArray;
     },
     filterArray() {
-      // TODO FILTER THE ARRAY!!!
-      console.log("v:model: " + this.currentAge);
-      console.log("v:model: " + this.currentState);
-      console.log("v:model: " + this.currentGender);
-      console.log("v:model: " + this.currentStatus); 
-      this.isFiltered = true;
-      console.log("isFiltered: " + this.isFiltered);
-      this.displayedPlayerArray = this.filteredPlayerArray;
-    },
-    saveFilter(keyName) {
-      switch(keyName) {
-        case 'age':
-          this.filters[keyName] = this.currentAge;
-          break;
-        case 'gender':
-          this.filters[keyName] = this.currentGender;
-          break;
-        case 'state':
-          this.filters[keyName] = this.currentState;
-          break;
-        case 'status':
-          this.filters[keyName] = this.currentStatus;
-          break;
-        default:
-          return;
+      // Using first filter on allPlayersArray
+      if(this.filters.length >= 1) {
+        let x = this.filters[0];
+        console.log("filter: " + x);
+
+        let value = checkValue(x);
+
+        this.filteredPlayerArray = this.allPlayersArray.filter(function (value) {
+          return this.allPlayersArray.x === value;
+        })
       }
+
+      if(this.filters.length >= 2) {
+        // Iterate through filters[] starting at 2nd value with filteredPlayerArray
+      }      
+      
+      this.displayedPlayerArray = this.filteredPlayerArray;
+      this.isFiltered = true;
+    },
+    saveFilter(filterName) {
+      this.filters.push(filterName);
     }
   },
   mounted: function() {
