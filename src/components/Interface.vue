@@ -11,7 +11,7 @@
   <div>
     <div class="filterContainer">
       <div>
-        <h2>Player Manager</h2>
+        <h2>Manage Players</h2>
       </div>
       <div class="selectContainer">
         <v-select
@@ -71,7 +71,7 @@
 <script>
 let genderList = [ "Female", "Male", "Cis/Trans"];
 let highAge = 17;
-let lowAge = 0;
+let lowAge = 1;
 let statesList = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
 let statusList = [ "active", "inactive"];
 
@@ -108,11 +108,8 @@ export default {
   methods: { 
     clearFilteredArray() {      
       this.isFiltered = false;
-      console.log("isFiltered: " + this.isFiltered);
       this.filteredPlayerArray = [];
-      console.log("filtered array cleared: " + this.filteredPlayerArray);
       this.filters = {};
-      console.log("cleared filters: " + this.filters);
     },
     filterArray() {
       // TODO FILTER THE ARRAY!!!
@@ -125,7 +122,6 @@ export default {
       this.displayedPlayerArray = this.filteredPlayerArray;
     },
     saveFilter(keyName) {
-      console.log("keyname is " + keyName);
       switch(keyName) {
         case 'age':
           this.filters[keyName] = this.currentAge;
@@ -147,7 +143,8 @@ export default {
   mounted: function() {
     axios.get(`https://dii-test.s3.amazonaws.com/players.json`)
     .then(response => {
-      this.allPlayersArray = response.data
+      this.allPlayersArray = response.data;
+      this.displayedPlayerArray = this.allPlayersArray;
     })
     .catch(e => {
       console.log("get error: " + e)
