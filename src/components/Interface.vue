@@ -50,7 +50,7 @@
     <!-- Player Cards -->
     <div class="cardContainer">
       <Card 
-        v-for="player in this.playerArray"
+        v-for="player in this.displayedPlayerArray"
         class="row" 
         :key="player.index" 
         :playerName="player.name"
@@ -96,7 +96,7 @@ export default {
       genders: genderList,
       isFiltered: false,
       locations: statesList,
-      playerArray: null,      
+      displayedPlayerArray: null,      
       status: statusList
     }
   },
@@ -110,7 +110,7 @@ export default {
       this.isFiltered = false;
       console.log("isFiltered: " + this.isFiltered);
       this.filteredPlayerArray = [];
-      console.log("cleared filtered array: " + this.filteredPlayerArray);
+      console.log("filtered array cleared: " + this.filteredPlayerArray);
       this.filters = {};
       console.log("cleared filters: " + this.filters);
     },
@@ -122,7 +122,7 @@ export default {
       console.log("v:model: " + this.currentStatus); 
       this.isFiltered = true;
       console.log("isFiltered: " + this.isFiltered);
-      this.playerArray = this.filteredPlayerArray;
+      this.displayedPlayerArray = this.filteredPlayerArray;
     },
     saveFilter(keyName) {
       console.log("keyname is " + keyName);
@@ -147,11 +147,11 @@ export default {
   mounted: function() {
     axios.get(`https://dii-test.s3.amazonaws.com/players.json`)
     .then(response => {
-      this.playerArray = response.data
+      this.allPlayersArray = response.data
     })
     .catch(e => {
       console.log("get error: " + e)
-    });    
+    });  
   },
 };
 
