@@ -1,9 +1,3 @@
-<!-- TODOS
-
-- enable 'edit player' btn
-
--->
-
 <template>
   <div>
     <div class="container">
