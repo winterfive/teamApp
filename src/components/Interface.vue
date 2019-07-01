@@ -18,29 +18,29 @@
           :items="this.ages"
           label="Age"
           box
-          v-on:click="filterArray('age', $event)"
+          v-on:click="handleClick('age', $event)"
         ></v-select>
         <v-select 
           :items="this.genders"
           label="Gender"
           box
-          v-on:click="filterArray('gender', $event)"
+          v-on:click="handleClick('gender', $event)"
         ></v-select>
         <v-select 
           :items="this.locations"
           label="Location"
           box
-          v-on:click="filterArray('state', $event)"
+          v-on:click="handleClick('state', $event)"
         ></v-select>
         <v-select 
           :items="this.status"
           label="Status"
           box
-          v-on:click="filterArray('status', $event)"
+          v-on:click="handleClick('status', $event)"
         ></v-select>
         <!-- Filtering btns -->
-        <v-btn class="filterBtn" v-if="!isFiltered" @click="this.filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
-        <v-btn class="filterBtn" v-else @click="this.clearFilteredArray" small dark color="blue lighten-1">Show All Players</v-btn>
+        <v-btn class="filterBtn" v-if="!isFiltered" @click="filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
+        <v-btn class="filterBtn" v-else @click="clearFilteredArray" small dark color="blue lighten-1">Show All Players</v-btn>
       </div>
     </div>
     <!-- Player Cards -->
@@ -96,24 +96,23 @@ export default {
     }
   },
   methods: {
-    filterArray(key, event) {
-      event.preventDefault()
+    handleClick(key, $event) {      
       console.log("key: " + key);
-      console.log("value: " + event);      
+      console.log("value: " + $event.target); 
+      event.preventDefault()     
 
       // TODO Working on this method
-
-      //this.filtersToUse.push("'key':'event'")      
-
-      // Filter allPlayersArray using filters [] to create filteredPlayerArray
-
-      this.isFiltered = true;
-      this.playerArray = this.filteredPlayerArray;
     }, 
     clearFilteredArray() {
       this.isFiltered = false;
       this.filteredPlayerArray = [];
-    } 
+    },
+    filterArray() {
+      // Filter allPlayersArray using filters [] to create filteredPlayerArray
+      //this.filters.push("'key':'event'")  
+      this.isFiltered = true;
+      this.playerArray = this.filteredPlayerArray;
+    }
   },
   mounted: function() {
     axios.get(`https://dii-test.s3.amazonaws.com/players.json`)
