@@ -138,11 +138,11 @@ export default {
 }
 
 .filterContainer {
-  width: 90%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 0.8em;
-  align-items: center;
+  font-size: 0.8em;  
+  width: 90%;
 }
 
 .filterBtn {
@@ -153,13 +153,13 @@ h2 {
   margin: 10px 0;
 }
 
-.selectContainer {
-  width: 100%;
+.selectContainer {  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 20px 0;
+  width: 100%;
 }
 
 .v-select {

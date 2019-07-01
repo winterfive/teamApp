@@ -43,13 +43,28 @@ $text-color: white;
 
 .container {
   background-color: $bg-color;
+  border-radius: 5px;
+  color: $text-color;
   display: flex;
   flex-direction: column;
-  color: $text-color;
-  width: 350px;
   margin: 3px;
   padding: 15px;
-  border-radius: 5px;
+  width: 350px;
+  }
+
+p {
+  margin: 0.3em;
+}
+
+.playerAge {
+  background-color: $bg-player-age;
+  border-radius: 80px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;  
+  height: 40px;
+  line-height: 2.4;
+  width: 40px;
 }
 
 .sameLine {
@@ -58,23 +73,9 @@ $text-color: white;
   justify-content: space-between;
 }
 
-p {
-  margin: 0.3em;
-}
-
 v-btn {
   width: 80px;
   border-radius: 5px;
 }
 
-.playerAge {
-  background-color: $bg-player-age;
-  font-size: 1.2em;
-  font-weight: bold;
-  width: 40px;
-  height: 40px;
-  border-radius: 80px;
-  color: white;
-  line-height: 2.4;
-}
 </style>
