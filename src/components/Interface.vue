@@ -65,9 +65,11 @@
 </template>
 
 <script>
-let lowAge = 0;
+let genderList = [ "Female", "Male", "Cis/Trans"];
 let highAge = 17;
-let states = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
+let lowAge = 0;
+let statesList = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
+let statusList = [ "active", "inactive"];
 
 import Card from "./Card.vue";
 import axios from 'axios';
@@ -82,16 +84,16 @@ export default {
       ages: [],
       allPlayersArray: null,
       currentAge: 0,
-      currentGender: 0,
-      currentState: 0,
-      currentStatus: 0,  
+      currentGender: "",
+      currentState: "",
+      currentStatus: "",  
       filteredPlayerArray: null,
       filters: [],    
-      genders: [ "Female", "Male", "Cis/Trans"],
+      genders: genderList,
       isFiltered: false,
-      locations: states,
+      locations: statesList,
       playerArray: null,      
-      status: [ "active", "inactive"]
+      status: null
     }
   },
   created: function() {
