@@ -107,6 +107,15 @@ export default {
     }
   },
   methods: {
+    applyFirstFilter() {
+      let filterValue = this.filters[0];
+      let filterKey = this.checkValue(filterValue);
+      console.log("key: " + filterKey + ", filterValue: " + filterValue);
+
+      //loop through filters[]
+      // apply first filter to allPlayers and assign to displayPlayerArray
+      // apply all remaning filters to displayPlayerArray
+    },
     checkValue(x) {
       switch(x) {
         case 'age':
@@ -129,32 +138,13 @@ export default {
       this.displayedPlayerArray = this.allPlayersArray;
     },
     filterArray() {
-      // If there are any filters
+      // If there are any filters...
       if(this.filters.length > 0) {
         this.isFiltered = true;
-
-      // Using first filter on allPlayersArray
-      if(this.filters.length >= 1) {
-        let filterValue = this.filters[0];
-        let filterKey = this.checkValue(filterValue);
-        console.log("key: " + filterKey + ", filterValue: " + filterValue);
-
-        this.filteredPlayerArray = this.allPlayersArray.filter(function () {
-          // TODO Working on this method
-          // value is an object, not string or number
-          return this.allPlayersArray.filterKey === filterValue;
-        })
-      }
-
-      if(this.filters.length >= 2) {
-        // Iterate through filters[] starting at 2nd value with filteredPlayerArray
-      }      
-      
-      this.displayedPlayerArray = this.filteredPlayerArray;  
+        this.displayedPlayerArray = applyFilter(); 
       } else {
         alert("You haven't selected any filters.");
-      }
-          
+      }          
     },
     saveFilter(filterName) {
       this.filters.push(filterName);
