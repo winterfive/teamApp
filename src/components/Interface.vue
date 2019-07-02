@@ -114,8 +114,12 @@ export default {
 
       //loop through filters[]
       // apply first filter to allPlayers and assign to displayPlayerArray
+      this.displayedPlayerArray = this.allPlayersArray.filter(player => player.filterKey === filterValue);
+      console.log("displayed array: " + this.displayedPlayerArray);
+
       // apply all remaning filters to displayPlayerArray
-    },
+
+      },
     checkValue(x) {
       switch(x) {
         case 'age':
@@ -138,10 +142,9 @@ export default {
       this.displayedPlayerArray = this.allPlayersArray;
     },
     filterArray() {
-      // If there are any filters...
       if(this.filters.length > 0) {
         this.isFiltered = true;
-        this.displayedPlayerArray = applyFilter(); 
+        applyFirstFilter();
       } else {
         alert("You haven't selected any filters.");
       }          
