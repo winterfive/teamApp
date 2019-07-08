@@ -75,6 +75,7 @@ let highAge = 17;
 let lowAge = 1;
 let statesList = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
 let statusList = [ "active", "inactive"];
+let url = "https://api.myjson.com/bins/13ez1j";
 
 import Card from "./Card.vue";
 import axios from 'axios';
@@ -156,7 +157,7 @@ export default {
     }
   },
   mounted: function() {
-    axios.get(`https://dii-test.s3.amazonaws.com/players.json`)
+    axios.get(url)
     .then(response => {
       this.allPlayersArray = response.data;
       this.displayedPlayerArray = this.allPlayersArray;
