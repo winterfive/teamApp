@@ -108,8 +108,9 @@ export default {
   },
   methods: {
     applyFirstFilter() {
-      let filterValue = this.filters[0];
-      let filterKey = this.checkValue(filterValue);
+      console.log("got to here");
+      let filterKey = this.filters[0];
+      let filterValue= this.checkValue(filterKey);
       console.log("key: " + filterKey + ", filterValue: " + filterValue);
 
       //loop through filters[]
@@ -145,6 +146,7 @@ export default {
       if(this.filters.length > 0) {
         this.isFiltered = true;
         applyFirstFilter();
+        console.log("filters: " + this.filterArray);
       } else {
         alert("You haven't selected any filters.");
       }          
