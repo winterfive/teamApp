@@ -1,6 +1,5 @@
 <!-- TODOS
 
-- style: center filter container
 - clear v-selects on click of 'filter players' btn
 - enable 'edit player' btn
 - add delete player option to 'edit player' form
@@ -117,32 +116,28 @@ export default {
       </div>
       <div class="selectContainer">
         <v-select
-          :items="this.ages"
-          label="Age"
-          box
-          clearable
+          :options="this.ages"
+          placeholder="Age"
           v-model.lazy="currentAge"
           v-on:change="saveFilter('age')"
         ></v-select>
         <v-select 
-          :items="this.genders"
-          label="Gender"
-          box
-          clearable
+          :options="this.genders"
+          placeholder="Gender"
           v-model.lazy="currentGender"
           v-on:change="saveFilter('gender')"
         ></v-select>
         <v-select 
-          :items="this.locations"
-          label="Location"
+          :options="this.locations"
+          placeholder="Location"
           box
           clearable
           v-model.lazy="currentState"
           v-on:change="saveFilter('state')"
         ></v-select>
         <v-select 
-          :items="this.status"
-          label="Status"
+          :options="this.status"
+          placeholder="Status"
           box
           clearable
           v-model.lazy="currentStatus"
@@ -221,8 +216,7 @@ h2 {
 }
 
 .v-select {
-  max-width: 320px;
-  padding-right: 20px;
+  width: 220px;
 }
 
 </style>
