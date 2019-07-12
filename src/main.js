@@ -5,7 +5,6 @@ import "vuetify/dist/vuetify.min.css";
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 
-
 Vue.config.productionTip = false;
 Vue.component('v-select', vSelect);
 Vue.use(Vuetify);
