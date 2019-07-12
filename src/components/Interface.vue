@@ -116,18 +116,21 @@ export default {
       </div>
       <div class="selectContainer">
         <v-select
+          class="select"
           :options="this.ages"
           placeholder="Age"
           v-model.lazy="currentAge"
           v-on:change="saveFilter('age')"
         ></v-select>
-        <v-select 
+        <v-select
+          class="select"
           :options="this.genders"
           placeholder="Gender"
           v-model.lazy="currentGender"
           v-on:change="saveFilter('gender')"
         ></v-select>
         <v-select 
+          class="select"
           :options="this.locations"
           placeholder="Location"
           box
@@ -136,6 +139,7 @@ export default {
           v-on:change="saveFilter('state')"
         ></v-select>
         <v-select 
+          class="select"
           :options="this.status"
           placeholder="Status"
           box
@@ -195,7 +199,8 @@ export default {
   flex-direction: column;
   font-size: 0.8em;
   margin: 0 auto;
-  width: 90%;
+  max-width: 930px;
+  padding-bottom: 20px;
 }
 
 .filterBtn {
@@ -212,11 +217,13 @@ h2 {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
-  //width: 100%;
 }
 
-.v-select {
+.select {
+  background: white;
+  color: #000;
   width: 220px;
+  margin: 5px;
 }
 
 </style>
