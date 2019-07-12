@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" :class="{ redBackground : this.playerStatus === inactive}">
       <div class="sameLine">
         <h2>{{ this.playerName }}</h2>
         <p class="playerAge" color="blue lighten-4">{{ this.playerAge }}</p>
