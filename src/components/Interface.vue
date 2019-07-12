@@ -183,7 +183,8 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 0.8em;  
+  font-size: 0.8em;
+  margin: 0 auto;
   width: 90%;
 }
 
