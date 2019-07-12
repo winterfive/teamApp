@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="filterContainer">
-            <div>
+        <div>
+            <div class="filterContainer">
                 <h2>Filter Players</h2>
             </div>
             <div class="selectContainer">
@@ -61,6 +61,7 @@ export default {
     .filterContainer {
         width: 100%;
         background-color: #daf6ac;
+        border: 1px solid red;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
