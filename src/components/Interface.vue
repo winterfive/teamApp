@@ -8,67 +8,6 @@
 
 -->
 
-<template>
-  <div>
-    <div class="filterContainer">
-      <div>
-        <h2>Manage Players</h2>
-      </div>
-      <div class="selectContainer">
-        <v-select
-          :items="this.ages"
-          label="Age"
-          box
-          v-model.lazy="currentAge"
-          v-on:change="saveFilter('age')"
-        ></v-select>
-        <v-select 
-          :items="this.genders"
-          label="Gender"
-          box
-          v-model.lazy="currentGender"
-          v-on:change="saveFilter('gender')"
-        ></v-select>
-        <v-select 
-          :items="this.locations"
-          label="Location"
-          box
-          v-model.lazy="currentState"
-          v-on:change="saveFilter('state')"
-        ></v-select>
-        <v-select 
-          :items="this.status"
-          label="Status"
-          box
-          v-model.lazy="currentStatus"
-          v-on:change="saveFilter('status')"
-        ></v-select>
-        <!-- Filtering btns -->
-        <v-btn class="filterBtn" v-if="!isFiltered" @click="filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
-        <v-btn class="filterBtn" v-else @click="clearFilteredArray" small dark color="blue lighten-1">Show All Players</v-btn>
-      </div>
-    </div>
-    <!-- Player Cards -->
-    <div class="cardContainer">
-      <Card 
-        v-for="player in this.displayedPlayerArray"
-        class="row" 
-        :key="player.index" 
-        :playerName="player.name"
-        :playerAge="player.age"
-        :playerGender="player.gender"
-        :playerState="player.state"
-        :playerStatus="player.status">
-        {{ playerName }}
-        {{ playerAge }}
-        {{ playerGender }}
-        {{ playerState }}
-        {{ playerStatus }}
-      </Card>
-    </div>
-  </div>
-</template>
-
 <script>
 let genderList = [ "Female", "Male", "Cis/Trans"];
 let highAge = 17;
@@ -170,7 +109,83 @@ export default {
 
 </script>
 
+<template>
+  <div>
+    <div class="filterContainer">
+      <div>
+        <h2>Manage Players</h2>
+      </div>
+      <div class="selectContainer">
+        <v-select
+          :items="this.ages"
+          label="Age"
+          box
+          clearable
+          v-model.lazy="currentAge"
+          v-on:change="saveFilter('age')"
+        ></v-select>
+        <v-select 
+          :items="this.genders"
+          label="Gender"
+          box
+          clearable
+          v-model.lazy="currentGender"
+          v-on:change="saveFilter('gender')"
+        ></v-select>
+        <v-select 
+          :items="this.locations"
+          label="Location"
+          box
+          clearable
+          v-model.lazy="currentState"
+          v-on:change="saveFilter('state')"
+        ></v-select>
+        <v-select 
+          :items="this.status"
+          label="Status"
+          box
+          clearable
+          v-model.lazy="currentStatus"
+          v-on:change="saveFilter('status')"
+        ></v-select>
+      </div>
+        <!-- Filtering btns -->
+      <div class="alignRight">
+        <v-btn class="filterBtn" v-if="!isFiltered" @click="filterArray" small dark color="blue lighten-1">Filter Players</v-btn>
+        <v-btn class="filterBtn" v-else @click="clearFilteredArray" small dark color="blue lighten-1">Show All Players</v-btn>
+      </div>
+    </div>
+    <!-- Player Cards -->
+    <div class="cardContainer">
+      <Card 
+        v-for="player in this.displayedPlayerArray"
+        class="row" 
+        :key="player.index" 
+        :playerName="player.name"
+        :playerAge="player.age"
+        :playerGender="player.gender"
+        :playerState="player.state"
+        :playerStatus="player.status">
+        {{ playerName }}
+        {{ playerAge }}
+        {{ playerGender }}
+        {{ playerState }}
+        {{ playerStatus }}
+      </Card>
+    </div>
+  </div>
+</template>
+
+
+
 <style lang="scss" scoped>
+
+.alignRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
 
 .cardContainer {
   display: flex;
@@ -200,14 +215,14 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 20px 0;
-  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+  //width: 100%;
 }
 
 .v-select {
-  margin: 3px;
-  width: 60px;
+  max-width: 320px;
+  padding-right: 20px;
 }
 
 </style>
