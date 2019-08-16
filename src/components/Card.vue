@@ -32,7 +32,6 @@ export default {
 
 $bg-color: #313eab;
 $bg-player-age: #1A237E;
-$circle-color: #f6d4ac;
 $text-color: white;
 
 .container {
