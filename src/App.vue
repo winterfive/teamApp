@@ -21,7 +21,7 @@
   #app {
     align-items: center;
     color: #2c3e50;
-    background-color:  #daf6ac;
+    background-color:  #e7faeb;
     display: flex;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
