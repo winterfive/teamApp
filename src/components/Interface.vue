@@ -1,25 +1,15 @@
-<!-- TODOS
-
-- clear v-selects on click of 'filter players' btn
-- enable 'edit player' btn
-- add delete player option to 'edit player' form
-- add dark red background for inactive players
-
--->
-
 <script>
-let genderList = [ "Female", "Male", "Cis/Trans"];
+let genderList = ["Female", "Male", "Cis/Trans"];
 let highAge = 17;
 let lowAge = 1;
-let statesList = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
-let statusList = [ "active", "inactive"];
+let statesList = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ];
+let statusList = ["active", "inactive"];
 let url = "https://api.myjson.com/bins/13ez1j";
 
 import Card from "./Card.vue";
 import axios from 'axios';
 
 export default {
-  name: "app",
   components: {
     Card
   },
@@ -47,21 +37,22 @@ export default {
   },
   methods: {
     applyFirstFilter() {
-      console.log("got to here");
-      let filterKey = this.filters[0];
+      console.log("got to applyFirstFilter");
+      /* let filterKey = this.filters[0];
       let filterValue= this.checkValue(filterKey);
-      console.log("key: " + filterKey + ", filterValue: " + filterValue);
+      console.log("key: " + filterKey + ", filterValue: " + filterValue); */
 
       //loop through filters[]
       // apply first filter to allPlayers and assign to displayPlayerArray
-      this.displayedPlayerArray = this.allPlayersArray.filter(player => player.filterKey === filterValue);
-      console.log("displayed array: " + this.displayedPlayerArray);
+      /* this.displayedPlayerArray = this.allPlayersArray.filter(player => player.filterKey === filterValue);
+      console.log("displayed array: " + this.displayedPlayerArray); */
 
-      // apply all remaning filters to displayPlayerArray
+      // apply all remaining filters to displayPlayerArray
 
-      },
+    },
     checkValue(x) {
-      switch(x) {
+      console.log("checking value: " + x);
+      /* switch(x) {
         case 'age':
           return this.currentAge;
           break;
@@ -72,8 +63,7 @@ export default {
           return this.currentState;
           break;
         default:
-          return this.currentStatus
-      } 
+          return this.currentStatus */
     },
     clearFilteredArray() {     
       this.isFiltered = false;
@@ -83,15 +73,16 @@ export default {
     },
     filterArray() {
       if(this.filters.length > 0) {
-        this.isFiltered = true;
-        applyFirstFilter();
-        console.log("filters: " + this.filterArray);
+        /* this.isFiltered = true;
+        applyFirstFilter(); */
+        console.log("filtering array");
       } else {
         alert("You haven't selected any filters.");
       }          
     },
     saveFilter(filterName) {
-      this.filters.push(filterName);
+      console.log("filter pushed: " + filterName);
+      //this.filters.push(filterName);
     }
   },
   mounted: function() {
@@ -120,7 +111,7 @@ export default {
           :options="this.ages"
           placeholder="Age"
           v-model.lazy="currentAge"
-          v-on:change="saveFilter('age')"
+          @click="saveFilter('age')"
         ></v-select>
         <v-select
           class="select"
@@ -175,8 +166,6 @@ export default {
   </div>
 </template>
 
-
-
 <style lang="scss" scoped>
 
 .alignRight {
@@ -197,7 +186,7 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 0 auto;
   max-width: 930px;
   padding-bottom: 20px;
